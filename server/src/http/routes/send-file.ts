@@ -3,8 +3,9 @@ import { FastifyInstance } from 'fastify'
 import fs from 'node:fs'
 import path from 'node:path'
 import { pipeline } from 'stream/promises'
-import { randomUUID } from 'node:crypto'
+import { randomUUID, randomUUID } from 'node:crypto'
 import { convertFilesContentToDB } from '../../ia/loader'
+import { redis } from '../../lib/redis-store'
 
 export async function sendFile(app: FastifyInstance) {
   app.post('/api/files/upload', async function (request, reply) {
@@ -41,6 +42,19 @@ export async function sendFile(app: FastifyInstance) {
       }
 
       convertFilesContentToDB()
+
+      await redis.connect()
+
+      await redis.hSet(`uploads:${filename}`, [
+        'id',
+        randomUUID(),
+        'filename',
+        filename,
+        'uploadDate',
+        new Date().toISOString(),
+      ])
+
+      await redis.disconnect()
 
       reply.status(200).send({ message: 'Upload realizado com sucesso!' })
     } catch (error) {

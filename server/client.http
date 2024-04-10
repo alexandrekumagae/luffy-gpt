@@ -7,3 +7,11 @@ Content-Type: application/json
 {
   "question": "Qual foi o meu primeiro emprego?"
 }
+
+###
+
+# @name list-uploads
+GET  {{baseUrl}}/api/uploads
+Content-Type: application/json
+
+{}
