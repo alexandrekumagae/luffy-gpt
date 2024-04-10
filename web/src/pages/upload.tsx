@@ -19,6 +19,7 @@ import {
   TableCell,
   TableHead,
 } from '@/components/ui/table'
+import { convertTimestamp } from '@/utils/convertTimestamp'
 
 interface UploadProps {
   id: string
@@ -103,13 +104,13 @@ export function Upload() {
   }, [])
 
   return (
-    <div className="p-5">
-      <Link to="/">
+    <div className="flex h-full flex-col items-center justify-center">
+      <Link to="/" className="absolute left-5 top-5">
         <Button variant="default">Voltar para a tela inicial</Button>
       </Link>
-      <div className="flex min-h-[70vh] items-center justify-center">
+      <div className="flex items-center justify-center">
         <div>
-          <Card className="mx-auto w-[690px]">
+          <Card className="mx-auto w-[600px]">
             <CardHeader>
               <CardTitle>
                 Selecione o documento a ser enviado para base de dados
@@ -141,7 +142,9 @@ export function Upload() {
                     <TableRow key={index}>
                       <TableCell className="font-medium">{upload.id}</TableCell>
                       <TableCell>{upload.filename}</TableCell>
-                      <TableCell>{upload.uploadDate}</TableCell>
+                      <TableCell>
+                        {convertTimestamp(upload.uploadDate)}
+                      </TableCell>
                     </TableRow>
                   ))}
               </TableBody>

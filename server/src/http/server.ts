@@ -5,6 +5,7 @@ import multipart from '@fastify/multipart'
 import { sendMessage } from './routes/send-message'
 import { sendFile } from './routes/send-file'
 import { listUploads } from './routes/list-uploads'
+import { loginUser } from './routes/login-user'
 
 const app = fastify()
 
@@ -17,6 +18,7 @@ app.register(cors, {
 app.register(sendMessage)
 app.register(sendFile)
 app.register(listUploads)
+app.register(loginUser)
 
 app.listen({ port: 3002, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server is running on http://localhost:3002 🔥.')

@@ -21,10 +21,11 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>
 
 export function Chat() {
+  const { toast } = useToast()
+
   const [question, setQuestion] = useState('')
   const [answer, setAnswer] = useState('')
   const [showLoader, setShowLoader] = useState(false)
-  const { toast } = useToast()
 
   const { register, handleSubmit, reset } = useForm({
     resolver: zodResolver(formSchema),
@@ -61,11 +62,11 @@ export function Chat() {
   }
 
   return (
-    <div className="p-5">
-      <Link to="/">
+    <div className="flex h-full flex-col items-center justify-center">
+      <Link to="/" className="absolute left-5 top-5">
         <Button variant="default">Voltar para a tela inicial</Button>
       </Link>
-      <div className="mx-auto flex min-h-[70vh] max-w-[690px] items-center justify-center">
+      <div className="mx-auto flex w-full max-w-[600px] items-center justify-center">
         <div className="w-full">
           <div className="mb-8 flex flex-col gap-4">
             {!question && (

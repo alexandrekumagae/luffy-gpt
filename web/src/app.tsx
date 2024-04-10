@@ -13,7 +13,7 @@ function App() {
     <div className="flex h-full min-h-screen items-center justify-center">
       <div>
         <h1 className="mb-4 text-center">Selecione uma opção:</h1>
-        <div className="grid max-w-[500px] grid-cols-2 gap-4">
+        <div className="grid max-w-[600px] grid-cols-2 gap-4">
           <Link to="/chat">
             <Card className="">
               <CardHeader>

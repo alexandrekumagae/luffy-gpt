@@ -3,7 +3,7 @@ import { FastifyInstance } from 'fastify'
 import fs from 'node:fs'
 import path from 'node:path'
 import { pipeline } from 'stream/promises'
-import { randomUUID, randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import { convertFilesContentToDB } from '../../ia/loader'
 import { redis } from '../../lib/redis-store'
 
