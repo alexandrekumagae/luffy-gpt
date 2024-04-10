@@ -6,28 +6,26 @@ import { TokenTextSplitter } from 'langchain/text_splitter'
 import { createClient } from 'redis'
 import { RedisVectorStore } from 'langchain/vectorstores/redis'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
+import { clearDirectory } from '../utils/clearDirectory'
 
-const loader = new DirectoryLoader(
-  path.resolve(__dirname, '../tmp'),
-  {
-    ".txt": path => new TextLoader(path)
-  }
-)
+const loader = new DirectoryLoader(path.resolve(__dirname, '../../tmp'), {
+  '.txt': (path) => new TextLoader(path),
+})
 
-async function load() {
+export async function convertFilesContentToDB() {
   try {
     const docs = await loader.load()
 
     const splitter = new TokenTextSplitter({
       encodingName: 'cl100k_base',
       chunkSize: 300,
-      chunkOverlap: 0
+      chunkOverlap: 0,
     })
 
     const splittedDocuments = await splitter.splitDocuments(docs)
 
     const redis = createClient({
-      url: 'redis://127.0.0.1:6379'
+      url: 'redis://127.0.0.1:6379',
     })
 
     await redis.connect()
@@ -38,14 +36,16 @@ async function load() {
       {
         indexName: 'documents-embeddings',
         redisClient: redis,
-        keyPrefix: 'documents:'
-      }
+        keyPrefix: 'documents:',
+      },
     )
 
     await redis.disconnect()
+
+    await clearDirectory()
   } catch (error) {
     console.log('Ocorreu o seguinte erro', error)
   }
 }
 
-load()
+// convertFilesContentToDB()

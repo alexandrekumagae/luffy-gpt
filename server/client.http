@@ -5,5 +5,5 @@ POST  {{baseUrl}}/api/messages
 Content-Type: application/json
 
 {
-  "message": "Qual foi o meu primeiro emprego?"
+  "question": "Qual foi o meu primeiro emprego?"
 }

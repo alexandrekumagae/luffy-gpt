@@ -1,8 +1,8 @@
-import { RetrievalQAChain } from "langchain/chains";
-import { ChatOpenAI } from "langchain/chat_models/openai";
-import { PromptTemplate } from "langchain/prompts";
+import { RetrievalQAChain } from 'langchain/chains'
+import { ChatOpenAI } from 'langchain/chat_models/openai'
+import { PromptTemplate } from 'langchain/prompts'
 
-import { redis, redisVectorStore } from "../lib/redis-store";
+import { redis, redisVectorStore } from '../lib/redis-store'
 
 const openAiChat = new ChatOpenAI({
   openAIApiKey: process.env.OPENAIA_API_KEY,
@@ -25,17 +25,21 @@ const prompt = new PromptTemplate({
   inputVariables: ['context', 'question'],
 })
 
-const chain = RetrievalQAChain.fromLLM(openAiChat, redisVectorStore.asRetriever(), {
-  prompt,
-  returnSourceDocuments: false,
-  verbose: false,
-})
+const chain = RetrievalQAChain.fromLLM(
+  openAiChat,
+  redisVectorStore.asRetriever(),
+  {
+    prompt,
+    returnSourceDocuments: false,
+    verbose: false,
+  },
+)
 
 export async function sendMessageToGPT(message: string) {
   await redis.connect()
 
   const response = await chain.call({
-    query: message
+    query: message,
   })
 
   await redis.disconnect()
