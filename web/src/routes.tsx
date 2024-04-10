@@ -5,7 +5,8 @@ import { createBrowserRouter } from 'react-router-dom'
 import App from './app'
 
 import { Login } from './pages/login'
-import { Dashboard } from './pages/(admin)/dashboard'
+import { Upload } from './pages/(admin)/upload'
+import { Chat } from './pages/chat'
 
 export const router = createBrowserRouter([
   {
@@ -13,11 +14,15 @@ export const router = createBrowserRouter([
     element: <App />,
   },
   {
+    path: '/chat',
+    element: <Chat />,
+  },
+  {
     path: '/login',
     element: <Login />,
   },
   {
-    path: '/dashboard',
-    element: <Dashboard />,
+    path: '/upload',
+    element: <Upload />,
   },
 ])
