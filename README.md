@@ -6,8 +6,8 @@ O LuffyGPT é uma aplicação para **responder perguntas** baseadas nos **arquiv
 
 ### Requisitos funcionais
 
-- [x] O usuário deve poder cadastrar um novo documento;
-- [x] O usuário deve poder realizar perguntas para o bot;
+- [x] O usuário poderá cadastrar um novo documento;
+- [x] O usuário poderá realizar perguntas para o bot;
 
 ### Regras de negócio
 
