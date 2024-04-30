@@ -16,16 +16,10 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>
 
 interface ChatFormProps {
-  handleSetQuestion: (question: string) => void
-  handleSetAnswer: (answer: string) => void
   handleSetLoader: (setLoader: boolean) => void
 }
 
-export function ChatForm({
-  handleSetQuestion,
-  handleSetAnswer,
-  handleSetLoader,
-}: ChatFormProps) {
+export function ChatForm({ handleSetLoader }: ChatFormProps) {
   const { toast } = useToast()
 
   const { register, handleSubmit, reset } = useForm({
@@ -38,12 +32,10 @@ export function ChatForm({
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       if (data) {
-        handleSetQuestion(data.question)
         handleSetLoader(true)
 
         const response = await api.post(`/messages`, data)
         if (response.status === 200) {
-          handleSetAnswer(response.data.text)
           reset()
         } else {
           toast({
@@ -64,6 +56,13 @@ export function ChatForm({
     }
   }
 
+  function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      handleSubmit(onSubmit)(event)
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Textarea
@@ -71,6 +70,7 @@ export function ChatForm({
         placeholder="Digite sua pergunta aqui..."
         className="mb-4"
         {...register('question')}
+        onKeyDown={handleKeyDown}
       />
 
       <Button variant="default" type="submit">

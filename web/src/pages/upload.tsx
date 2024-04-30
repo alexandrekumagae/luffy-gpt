@@ -18,7 +18,7 @@ export function Upload() {
       </Link>
       <div className="flex items-center justify-center">
         <div>
-          <Card className="mx-auto w-[600px]">
+          <Card className="mx-auto w-[450px]">
             <CardHeader>
               <CardTitle>
                 Selecione o documento a ser enviado para base de dados
