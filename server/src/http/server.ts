@@ -6,6 +6,7 @@ import { sendMessage } from './routes/send-message'
 import { sendFile } from './routes/send-file'
 import { listUploads } from './routes/list-uploads'
 import { loginUser } from './routes/login-user'
+import { listMessages } from './routes/list-messages'
 
 const app = fastify()
 
@@ -18,6 +19,7 @@ app.register(cors, {
 app.register(sendMessage)
 app.register(sendFile)
 app.register(listUploads)
+app.register(listMessages)
 app.register(loginUser)
 
 app.listen({ port: 3002, host: '0.0.0.0' }).then(() => {

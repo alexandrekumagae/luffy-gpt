@@ -10,6 +10,14 @@ Content-Type: application/json
 
 ###
 
+# @name list-messages
+GET {{baseUrl}}/api/messages
+Content-Type: application/json
+
+{}
+
+###
+
 # @name list-uploads
 GET {{baseUrl}}/api/uploads
 Content-Type: application/json
