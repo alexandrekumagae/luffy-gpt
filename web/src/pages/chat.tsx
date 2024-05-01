@@ -18,7 +18,9 @@ export function Chat() {
   }
 
   useEffect(() => {
-    fetchMessages()
+    if (!showLoader) {
+      fetchMessages()
+    }
   }, [showLoader])
 
   return (

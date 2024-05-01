@@ -8,6 +8,7 @@ import { useToast } from '@/components/ui/use-toast'
 
 import { Button } from './ui/button'
 import { Textarea } from './ui/textarea'
+import { useState } from 'react'
 
 const formSchema = z.object({
   question: z.string().min(3, { message: 'Campo obrigatório.' }),
@@ -22,6 +23,8 @@ interface ChatFormProps {
 export function ChatForm({ handleSetLoader }: ChatFormProps) {
   const { toast } = useToast()
 
+  const [loading, setLoading] = useState(false)
+
   const { register, handleSubmit, reset } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,6 +36,7 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
     try {
       if (data) {
         handleSetLoader(true)
+        setLoading(true)
 
         const response = await api.post(`/messages`, data)
         if (response.status === 200) {
@@ -44,8 +48,6 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
             description: 'Tente novamente daqui alguns minutos.',
           })
         }
-
-        handleSetLoader(false)
       }
     } catch (error) {
       toast({
@@ -53,6 +55,9 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
         title: 'Erro no envio da pergunta!',
         description: 'Tente novamente daqui alguns minutos.',
       })
+    } finally {
+      handleSetLoader(false)
+      setLoading(false)
     }
   }
 
@@ -68,12 +73,18 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
       <Textarea
         required
         placeholder="Digite sua pergunta aqui..."
-        className="mb-4"
+        className="mb-4 disabled:opacity-30"
         {...register('question')}
         onKeyDown={handleKeyDown}
+        disabled={loading}
       />
 
-      <Button variant="default" type="submit">
+      <Button
+        variant="default"
+        type="submit"
+        disabled={loading}
+        className="disabled:opacity-30"
+      >
         Enviar
       </Button>
     </form>
