@@ -53,7 +53,6 @@ export async function sendMessage(app: FastifyInstance) {
 
       return reply.status(200).send({ text: response.text })
     } catch (err) {
-      console.log('erro', err)
       return reply
         .status(500)
         .send({ message: 'Ocorreu um erro na solicitação.' })

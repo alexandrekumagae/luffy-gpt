@@ -33,7 +33,7 @@ export function Chat() {
         <div></div>
       </header>
 
-      <div className="flex min-h-full flex-col items-center justify-center pb-20 pt-20">
+      <div className="flex min-h-[80vh] flex-col items-center justify-center pb-20 pt-20">
         <div className="mx-auto flex w-full max-w-[600px] items-center justify-center">
           <div className="w-full">
             <div className="mb-8 flex flex-col gap-4">
