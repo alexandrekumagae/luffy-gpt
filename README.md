@@ -15,10 +15,11 @@ Esse projeto está dividido em 2 partes:
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [React](https://reactjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Shadcn](https://ui.shadcn.com)
 - [TypeScript](https://www.typescriptlang.org)
 - [Node.js](https://nodejs.org)
 - [Fastify](https://fastify.dev)
-- [Prisma](https://www.prisma.io/orm)
 - [Redis](https://redis.io)
 
 ## 🚨 Pré-requisitos
