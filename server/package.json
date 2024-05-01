@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch --env-file=.env ./src/http/server.ts",
-    "loader": "tsx --env-file=.env ./src/ia/loader.ts"
+    "dev": "tsx watch --env-file=.env ./src/server.ts"
   },
   "keywords": [],
   "author": "",

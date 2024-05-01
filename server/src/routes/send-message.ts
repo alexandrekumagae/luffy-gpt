@@ -2,9 +2,11 @@ import { FastifyInstance } from 'fastify'
 
 import z from 'zod'
 
-import { sendMessageToGPT } from '../../ia/gpt'
 import { randomUUID } from 'node:crypto'
-import { redis } from '../../lib/redis-store'
+
+import { sendMessageToGPT } from '../ia/gpt'
+
+import { redis } from '../lib/redis-store'
 
 export async function sendMessage(app: FastifyInstance) {
   app.post('/api/messages', async function (request, reply) {

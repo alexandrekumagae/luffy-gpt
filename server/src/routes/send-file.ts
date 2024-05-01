@@ -2,10 +2,13 @@ import { FastifyInstance } from 'fastify'
 
 import fs from 'node:fs'
 import path from 'node:path'
-import { pipeline } from 'stream/promises'
 import { randomUUID } from 'node:crypto'
-import { convertFilesContentToDB } from '../../ia/loader'
-import { redis } from '../../lib/redis-store'
+
+import { pipeline } from 'stream/promises'
+
+import { convertFilesContentToDB } from '../ia/loader'
+
+import { redis } from '../lib/redis-store'
 
 export async function sendFile(app: FastifyInstance) {
   app.post('/api/files/upload', async function (request, reply) {
@@ -23,8 +26,6 @@ export async function sendFile(app: FastifyInstance) {
       const docsDir = path.join(__dirname, '..', '..', '..', 'tmp', 'docs')
       const savePath = path.join(docsDir, filename)
 
-      // console.log('Save path:', savePath)
-
       if (!fs.existsSync(docsDir)) {
         try {
           fs.mkdirSync(docsDir, { recursive: true })
@@ -37,8 +38,7 @@ export async function sendFile(app: FastifyInstance) {
       try {
         await pipeline(data.file, fs.createWriteStream(savePath))
       } catch (err) {
-        console.error('Failed in pipeline:', err)
-        // return reply.status(500).send({ error: 'Error processing file upload' })
+        return reply.status(500).send({ error: 'Error processing file upload' })
       }
 
       convertFilesContentToDB()

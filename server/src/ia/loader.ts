@@ -3,10 +3,12 @@ import path from 'node:path'
 import { DirectoryLoader } from 'langchain/document_loaders/fs/directory'
 import { TextLoader } from 'langchain/document_loaders/fs/text'
 import { TokenTextSplitter } from 'langchain/text_splitter'
-import { createClient } from 'redis'
-import { RedisVectorStore } from 'langchain/vectorstores/redis'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
-import { clearDirectory } from '../utils/clearDirectory'
+import { RedisVectorStore } from 'langchain/vectorstores/redis'
+
+import { createClient } from 'redis'
+
+import { clearDirectory } from '../utils/path'
 
 const loader = new DirectoryLoader(path.resolve(__dirname, '../../tmp'), {
   '.txt': (path) => new TextLoader(path),
@@ -47,5 +49,3 @@ export async function convertFilesContentToDB() {
     console.log('Ocorreu o seguinte erro', error)
   }
 }
-
-// convertFilesContentToDB()

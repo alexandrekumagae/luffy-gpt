@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify'
 
-import { redis } from '../../lib/redis-store'
+import { redis } from '../lib/redis-store'
 
 export async function listMessages(app: FastifyInstance) {
   app.get('/api/messages', async function (request, reply) {
@@ -18,11 +18,9 @@ export async function listMessages(app: FastifyInstance) {
       await redis.disconnect()
 
       const orderedMessages = messages.sort((a, b) => {
-        // Compare os valores de 'dataKey' para ordenar os objetos
         const keyA = a.createdAt
         const keyB = b.createdAt
 
-        // Ordenar em ordem crescente
         if (keyA < keyB) {
           return -1
         } else if (keyA > keyB) {
