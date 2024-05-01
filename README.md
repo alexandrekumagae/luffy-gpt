@@ -1,20 +1,41 @@
 # LuffyGPT
 
-O LuffyGPT é uma aplicação para **responder perguntas** baseadas nos **arquivos que você fizer o upload**.
+![LuffyGPT](.github/cover.png)
 
-## Requisitos
+## 💻 Projeto
+O LuffyGPT é uma aplicação de **chatbot** baseado nos **arquivos .txt que você fizer o upload**.
 
-### Requisitos funcionais
+Esse projeto está dividido em 2 partes:
 
-- [x] O usuário poderá cadastrar um novo documento;
-- [x] O usuário poderá realizar perguntas para o bot;
+- /web: SPA (Single Page Application) desenvolvida com React.
+- /server: API desenvolvida em Node.js.
 
-### Regras de negócio
+## 🧪 Tecnologias
 
-- [ ] O usuário precisa se logar na aplicação para poder utilizar a ferramenta;
-- [x] O usuário poderá cadastrar somente um documento por vez;
-- [x] O usuário terá apenas uma tela de conversa;
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-## Banco de dados
+- [React](https://reactjs.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [Node.js](https://nodejs.org)
+- [Fastify](https://fastify.dev)
+- [Prisma](https://www.prisma.io/orm)
+- [Redis](https://redis.io)
 
-Nessa aplicação vamos utilizar o banco de dados não relacional Redis.
+## 🚨 Pré-requisitos
+
+- Node.js versão 20.10.0 ou superior.
+- Docker.
+
+## 🚀 Como executar
+
+### Para rodar o servidor:
+
+1. Navegue até o diretório /server.
+2. Execute `npm install` para instalar as dependências.
+3. Por fim, execute `npm run dev` para iniciar o servidor na porta http://localhost:3002.
+
+### Para rodar a aplicação web:
+
+1. Navegue até o diretório /web.
+2. Execute `npm install` para instalar as dependências.
+3. Execute `npm run dev` para iniciar o servidor de desenvolvimento no endereço: http://localhost:5173.
