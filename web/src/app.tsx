@@ -4,7 +4,7 @@ import { OptionCard } from './components/option-card'
 
 function App() {
   return (
-    <div className="flex h-full min-h-screen items-center justify-center">
+    <div className="flex min-h-[90vh] items-center justify-center">
       <div>
         <h1 className="mb-4 text-center">Selecione uma opção:</h1>
 

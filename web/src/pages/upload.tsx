@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 import { useFetchUploads } from '@/hooks/useFetchUploads'
 
-import { UploadForm } from '@/components/upload-form'
-import { UploadsTable } from '@/components/uploads-table'
+import { UploadForm } from '@/components/upload/upload-form'
+import { UploadsTable } from '@/components/upload/uploads-table'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -23,7 +23,7 @@ export function Upload() {
         <div></div>
       </header>
 
-      <div className="flex min-h-[90vh] flex-col items-center justify-center">
+      <div className="flex min-h-[85vh] flex-col items-center justify-center">
         <div className="flex items-center justify-center">
           <div>
             <Card className="mx-auto w-[450px]">

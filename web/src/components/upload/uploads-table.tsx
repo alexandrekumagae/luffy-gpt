@@ -7,7 +7,7 @@ import {
   TableHead,
   TableBody,
   TableCell,
-} from './ui/table'
+} from '../ui/table'
 
 interface UploadProps {
   id: string

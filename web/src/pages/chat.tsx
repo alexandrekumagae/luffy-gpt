@@ -5,8 +5,10 @@ import { useFetchMessages } from '@/hooks/useFetchMessages'
 
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ChatForm } from '@/components/chat-form'
-import { ListMessages } from '@/components/list-messages'
+import { ChatForm } from '@/components/chat/chat-form'
+import { ListMessages } from '@/components/chat/list-messages'
+
+import { ArrowDownIcon } from '@radix-ui/react-icons'
 
 export function Chat() {
   const [showLoader, setShowLoader] = useState(false)
@@ -25,14 +27,25 @@ export function Chat() {
 
   return (
     <>
-      <header className="grid grid-cols-3 items-center pl-5 pt-5">
-        <Link to="/" className="block">
+      <Button
+        className="fixed bottom-10 right-10"
+        onClick={() => window.scrollTo(0, document.body.scrollHeight)}
+      >
+        <ArrowDownIcon />
+      </Button>
+
+      <header className="fixed left-0 top-0 z-10 grid w-full grid-cols-3 items-center bg-white p-4">
+        <Link to="/" className="flex">
           <Button variant="default">Voltar para a tela inicial</Button>
         </Link>
+
         <div className="flex items-center justify-center">
           <h1 className="text-center text-2xl font-bold">Luffy GPT</h1>
         </div>
-        <div></div>
+
+        <div className="flex justify-end">
+          <Button variant="destructive">Limpar conversas</Button>
+        </div>
       </header>
 
       <div className="flex min-h-[80vh] flex-col items-center justify-center pb-20 pt-20">

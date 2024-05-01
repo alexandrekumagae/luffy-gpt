@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react'
+
 import { api } from '@/lib/api'
 
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -6,9 +8,8 @@ import { z } from 'zod'
 
 import { useToast } from '@/components/ui/use-toast'
 
-import { Button } from './ui/button'
-import { Textarea } from './ui/textarea'
-import { useState } from 'react'
+import { Button } from '../ui/button'
+import { Textarea } from '../ui/textarea'
 
 const formSchema = z.object({
   question: z.string().min(3, { message: 'Campo obrigatório.' }),
@@ -24,6 +25,8 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
   const { toast } = useToast()
 
   const [loading, setLoading] = useState(false)
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const { register, handleSubmit, reset } = useForm({
     resolver: zodResolver(formSchema),
@@ -68,6 +71,12 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
     }
   }
 
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.focus()
+    }
+  }, [])
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Textarea
@@ -77,6 +86,7 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
         {...register('question')}
         onKeyDown={handleKeyDown}
         disabled={loading}
+        ref={textareaRef}
       />
 
       <Button
