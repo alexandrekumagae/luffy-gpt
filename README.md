@@ -26,6 +26,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - Node.js versão 20.10.0 ou superior.
 - Docker.
+- API key da OpenAI.
 
 ## 🚀 Como executar
 
@@ -33,10 +34,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 1. Navegue até o diretório /server.
 2. Execute `npm install` para instalar as dependências.
-3. Por fim, execute `npm run dev` para iniciar o servidor na porta http://localhost:3002.
+3. Renomeie o arquivo .env.default para .env e insira sua API Key da OpenAI.
+4. Por fim, execute `npm run dev` para iniciar o servidor na porta http://localhost:3002.
 
 ### Para rodar a aplicação web:
 
 1. Navegue até o diretório /web.
 2. Execute `npm install` para instalar as dependências.
-3. Execute `npm run dev` para iniciar o servidor de desenvolvimento no endereço: http://localhost:5173.
+3. Renomeie o arquivo .env.default para .env.
+4. Execute `npm run dev` para iniciar o servidor de desenvolvimento no endereço: http://localhost:5173.
