@@ -12,7 +12,7 @@ const openAiChat = new ChatOpenAI({
 
 const prompt = new PromptTemplate({
   template: `
-    Você responde perguntas a respeito do meu currículo.
+    Você responde perguntas a respeito das informações pessoais do usuário.
     Use o conteúdo dos documentos abaixo para responder a pergunta do usuário.
     Se a resposta não for encontrada nos documentos, responda que você não sabe, não tente inventar uma resposta.
 
