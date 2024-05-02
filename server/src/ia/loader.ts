@@ -3,8 +3,9 @@ import path from 'node:path'
 import { DirectoryLoader } from 'langchain/document_loaders/fs/directory'
 import { TextLoader } from 'langchain/document_loaders/fs/text'
 import { TokenTextSplitter } from 'langchain/text_splitter'
-import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
-import { RedisVectorStore } from 'langchain/vectorstores/redis'
+
+import { OpenAIEmbeddings } from '@langchain/openai'
+import { RedisVectorStore } from '@langchain/redis'
 
 import { createClient } from 'redis'
 

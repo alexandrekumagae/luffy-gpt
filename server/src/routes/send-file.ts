@@ -23,7 +23,7 @@ export async function sendFile(app: FastifyInstance) {
       const uuid = randomUUID()
       const filename = `${basename}-${uuid}${ext}`
 
-      const docsDir = path.join(__dirname, '..', '..', '..', 'tmp', 'docs')
+      const docsDir = path.join(__dirname, '..', '..', 'tmp', 'docs')
       const savePath = path.join(docsDir, filename)
 
       if (!fs.existsSync(docsDir)) {

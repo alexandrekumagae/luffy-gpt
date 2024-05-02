@@ -16,9 +16,10 @@ app.register(cors, {
 })
 
 app.register(sendMessage)
+app.register(listMessages)
+
 app.register(sendFile)
 app.register(listUploads)
-app.register(listMessages)
 
 app.listen({ port: 3002, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server is running on http://localhost:3002 🔥.')

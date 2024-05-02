@@ -18,6 +18,14 @@ Content-Type: application/json
 
 ###
 
+# @name delete-messages
+DELETE {{baseUrl}}/api/messages
+Content-Type: application/json
+
+{}
+
+###
+
 # @name list-uploads
 GET {{baseUrl}}/api/uploads
 Content-Type: application/json

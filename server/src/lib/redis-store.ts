@@ -1,7 +1,7 @@
 import { createClient } from 'redis'
 
-import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
-import { RedisVectorStore } from 'langchain/vectorstores/redis'
+import { OpenAIEmbeddings } from '@langchain/openai'
+import { RedisVectorStore } from '@langchain/redis'
 
 export const redis = createClient({
   url: 'redis://127.0.0.1:6379',

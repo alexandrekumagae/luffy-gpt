@@ -1,6 +1,6 @@
 import { RetrievalQAChain } from 'langchain/chains'
-import { ChatOpenAI } from 'langchain/chat_models/openai'
-import { PromptTemplate } from 'langchain/prompts'
+import { ChatOpenAI } from '@langchain/openai'
+import { PromptTemplate } from '@langchain/core/prompts'
 
 import { redis, redisVectorStore } from '../lib/redis-store'
 
