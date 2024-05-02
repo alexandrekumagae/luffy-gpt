@@ -26,9 +26,7 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
 
   const [loading, setLoading] = useState(false)
 
-  const textareaRef = useRef<HTMLTextAreaElement>(null)
-
-  const { register, handleSubmit, reset } = useForm({
+  const { register, handleSubmit, reset, setFocus } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       question: '',
@@ -72,9 +70,7 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
   }
 
   useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.focus()
-    }
+    setFocus('question')
   }, [])
 
   return (
@@ -86,7 +82,6 @@ export function ChatForm({ handleSetLoader }: ChatFormProps) {
         {...register('question')}
         onKeyDown={handleKeyDown}
         disabled={loading}
-        ref={textareaRef}
       />
 
       <Button

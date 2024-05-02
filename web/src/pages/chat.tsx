@@ -43,9 +43,7 @@ export function Chat() {
           <h1 className="text-center text-2xl font-bold">Luffy GPT</h1>
         </div>
 
-        <div className="flex justify-end">
-          <Button variant="destructive">Limpar conversas</Button>
-        </div>
+        <div className="flex justify-end"></div>
       </header>
 
       <div className="flex min-h-[80vh] flex-col items-center justify-center pb-20 pt-20">
